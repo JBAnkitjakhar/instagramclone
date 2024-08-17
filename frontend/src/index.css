@@ -1,4 +1,242 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('/bg2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 20px;
+  position: relative;
+}
+
+.login-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.login-content {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+.login-form, .welcome-side {
+  flex: 1;
+  padding: 40px;
+}
+
+.login-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.login-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: #aaa;
+  transition: color 0.3s ease;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+  transition: all 0.3s ease;
+  caret-color: #fcb045;
+}
+
+.input-field::placeholder {
+  color: #aaa;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #fcb045;
+  box-shadow: 0 0 0 3px rgba(252, 176, 69, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.input-field:hover {
+  cursor: text;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.input-field:not(:placeholder-shown) {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.input-field:focus + .input-icon {
+  color: #fcb045;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(to right, #1976D2, #fd1d1d, #fcb045);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.signup-link {
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.signup-link a {
+  color: #fcb045;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.signup-link a:hover {
+  color: #fd1d1d;
+}
+
+.welcome-side {
+  background: linear-gradient(135deg, #3F51B5, #a46ede, #e91e63);
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.welcome-content {
+  text-align: center;
+}
+
+.welcome-title {
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #F44336, #fcb045);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-text {
+  font-size: 1.2em;
+  max-width: 80%;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.login-button {
+  background-size: 200% 200%;
+  animation: gradientShift 5s ease infinite;
+}
+
+@media (max-width: 768px) {
+  .login-content {
+    flex-direction: column;
+  }
   
+  .welcome-side {
+    padding: 20px;
+  }
+
+  .login-form {
+    padding: 20px;
+  }
+
+  .welcome-title {
+    font-size: 2em;
+  }
+
+  .welcome-text {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 10px;
+  }
+
+  .login-content {
+    width: 100%;
+    border-radius: 12px;
+  }
+
+  .input-field {
+    padding: 10px 10px 10px 35px;
+  }
+
+  .login-button {
+    padding: 10px;
+  }
+
+  .welcome-side {
+    padding: 15px;
+  }
+
+  .welcome-title {
+    font-size: 1.5em;
+  }
+
+  .welcome-text {
+    font-size: 0.9em;
+  }
+}

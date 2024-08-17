@@ -83,9 +83,9 @@ function App() {
   }, [user, dispatch]);
 
   return (
-    <>
+    <div className='bg-[rgba(210,191,201,0.4)]'>
       <RouterProvider router={browserRouter} />
-    </>
+    </div>
   )
 }
 

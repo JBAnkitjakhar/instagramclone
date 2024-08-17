@@ -169,13 +169,13 @@ const Post = ({ post }) => {
                 )
             }
             <CommentDialog open={open} setOpen={setOpen} />
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-between bg-[rgba(210,191,201,0.4)]'>
                 <input
                     type="text"
                     placeholder='Add a comment...'
                     value={text}
                     onChange={changeEventHandler}
-                    className='outline-none text-sm w-full'
+                    className='outline-none text-sm w-full bg-[rgba(210,191,201,0.4)]'
                 />
                 {
                     text && <span onClick={commentHandler} className='text-[#3BADF8] cursor-pointer'>Post</span>
