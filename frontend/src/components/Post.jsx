@@ -116,7 +116,7 @@ const Post = ({ post }) => {
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
     <div>
-      <h1 className='font-semibold text-white'>{post.author?.username}</h1>
+      <h1 className='font-semibold text-blue-600'>{post.author?.username}</h1>
       {user?._id === post.author._id && <Badge variant="secondary" className="text-xs text-gray-300 bg-gray-700">Author</Badge>}
     </div>
   </div>
