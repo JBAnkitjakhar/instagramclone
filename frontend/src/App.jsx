@@ -36,7 +36,7 @@ const Logo = () => (
     transition={{ delay: 0.2 }}
     className="mb-8 flex justify-center"
   >
-    <h1 className="text-3xl font-serif italic text-white">ankitjakhar</h1>
+    <h1 className="text-3xl font-serif italic text-white">Instagram.jr</h1>
   </motion.div>
 );
 
