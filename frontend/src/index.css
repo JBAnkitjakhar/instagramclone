@@ -1,4 +1,5 @@
-@tailwind base;
+ 
+ @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -14,33 +15,52 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url('/bg2.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   padding: 20px;
   position: relative;
+  overflow: hidden;
 }
 
-.login-overlay {
+.dynamic-background {
   position: absolute;
   top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(192, 192, 192, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 90% 80%, rgba(0, 0, 128, 0.2) 0%, transparent 50%);
+  animation: backgroundShift 15s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundShift {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.2) rotate(5deg);
+  }
+}
+
+@keyframes backgroundShift {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  100% {
+    transform: scale(1.2) rotate(5deg);
+  }
 }
 
 .login-content {
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background-color: rgba(30, 30, 47, 0.8);
   border-radius: 24px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 
+              0 1px 2px rgba(0, 0, 0, 0.2),
+              inset 0 1px 1px rgba(255, 255, 255, 0.1);
   width: 90%;
   max-width: 1000px;
   display: flex;
   overflow: hidden;
+  backdrop-filter: blur(10px);
   position: relative;
   z-index: 1;
 }
@@ -78,12 +98,12 @@ html, body {
 .input-field {
   width: 100%;
   padding: 12px 12px 12px 40px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   background-color: rgba(255, 255, 255, 0.05);
   color: white;
   transition: all 0.3s ease;
-  caret-color: #fcb045;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .input-field::placeholder {
@@ -92,22 +112,13 @@ html, body {
 
 .input-field:focus {
   outline: none;
-  border-color: #fcb045;
-  box-shadow: 0 0 0 3px rgba(252, 176, 69, 0.3);
+  border-color: #6366F1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.input-field:hover {
-  cursor: text;
-  background-color: rgba(255, 255, 255, 0.08);
-}
-
-.input-field:not(:placeholder-shown) {
-  background-color: rgba(255, 255, 255, 0.15);
-}
-
 .input-field:focus + .input-icon {
-  color: #fcb045;
+  color: #6366F1;
 }
 
 .login-button {
@@ -115,77 +126,91 @@ html, body {
   padding: 12px;
   border: none;
   border-radius: 12px;
-  background: linear-gradient(to right, #1976D2, #fd1d1d, #fcb045);
+  background: linear-gradient(to right, #6366F1, #8B5CF6);
   color: white;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .login-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
 .signup-link {
   margin-top: 20px;
   text-align: center;
-  color: white;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  color: #aaa;
 }
 
 .signup-link a {
-  color: #fcb045;
+  color: #6366F1;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
 .signup-link a:hover {
-  color: #fd1d1d;
+  color: #8B5CF6;
 }
 
 .welcome-side {
-  background: linear-gradient(135deg, #3F51B5, #a46ede, #e91e63);
- 
+  background: linear-gradient(135deg, rgba(0, 0, 128, 0.7) 0%, rgba(70, 130, 180, 0.7) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  position: relative;
+  overflow: hidden;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.welcome-side::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: 
+    radial-gradient(circle at 30% 70%, rgba(135, 206, 250, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 70% 30%, rgba(0, 0, 128, 0.4) 0%, transparent 50%);
+  animation: pulseBackground 15s ease-in-out infinite alternate;
+}
+
+@keyframes pulseBackground {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
 }
 
 .welcome-content {
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .welcome-title {
   font-size: 3em;
   font-weight: bold;
   margin-bottom: 20px;
-  background: linear-gradient(to right, #F44336, #fcb045);
+  background: linear-gradient(to right, #E0FFFF, #87CEFA);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.welcome-text {
+.welcome-content p {
+  color: #E0FFFF;
   font-size: 1.2em;
-  max-width: 80%;
-  margin: 0 auto;
-  line-height: 1.6;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.login-button {
-  background-size: 200% 200%;
-  animation: gradientShift 5s ease infinite;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
@@ -193,20 +218,12 @@ html, body {
     flex-direction: column;
   }
   
-  .welcome-side {
-    padding: 20px;
-  }
-
-  .login-form {
+  .welcome-side, .login-form {
     padding: 20px;
   }
 
   .welcome-title {
     font-size: 2em;
-  }
-
-  .welcome-text {
-    font-size: 1em;
   }
 }
 
@@ -235,8 +252,19 @@ html, body {
   .welcome-title {
     font-size: 1.5em;
   }
-
-  .welcome-text {
-    font-size: 0.9em;
-  }
 }
+
+
+.gradient-background {
+  background: linear-gradient(to right, #000000, #808080, #7575c8);
+  background-size: 200% 200%;
+  animation: gradientShift 10s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+ 
